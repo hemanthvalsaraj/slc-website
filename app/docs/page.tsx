@@ -79,6 +79,16 @@ export default function DocsPage() {
         },
       ],
     },
+    {
+      title: "Resources",
+      items: [
+        {
+          title: "FAQ",
+          description: "Frequently asked questions about SLC and stateful serverless",
+          href: "/docs/faq",
+        },
+      ],
+    },
   ];
 
   return (

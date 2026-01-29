@@ -74,11 +74,40 @@ export const metadata: Metadata = {
   },
   category: "Technology",
   classification: "Cloud Computing Platform",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" }
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-icon-57x57.png", sizes: "57x57", type: "image/png" },
+      { url: "/apple-icon-60x60.png", sizes: "60x60", type: "image/png" },
+      { url: "/apple-icon-72x72.png", sizes: "72x72", type: "image/png" },
+      { url: "/apple-icon-76x76.png", sizes: "76x76", type: "image/png" },
+      { url: "/apple-icon-114x114.png", sizes: "114x114", type: "image/png" },
+      { url: "/apple-icon-120x120.png", sizes: "120x120", type: "image/png" },
+      { url: "/apple-icon-144x144.png", sizes: "144x144", type: "image/png" },
+      { url: "/apple-icon-152x152.png", sizes: "152x152", type: "image/png" },
+      { url: "/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-icon-precomposed.png", sizes: "180x180", type: "image/png" }
+    ],
+    other: [
+      { rel: "manifest", url: "/manifest.json" },
+      { rel: "apple-touch-icon-precomposed", url: "/apple-icon-precomposed.png" }
+    ]
+  },
+  manifest: "/manifest.json",
   other: {
     "application-name": "SLC",
     "apple-mobile-web-app-title": "SLC",
     "apple-mobile-web-app-capable": "yes",
-    "theme-color": "#020202"
+    "theme-color": "#020202",
+    "msapplication-TileColor": "#ffffff",
+    "msapplication-TileImage": "/ms-icon-144x144.png",
+    "msapplication-config": "/browserconfig.xml"
   }
 };
 

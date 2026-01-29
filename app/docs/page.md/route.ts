@@ -115,6 +115,12 @@ if (ctx.request.method === "POST") {
 return { queue: state.queue };
 \`\`\`
 
+## FAQ
+
+[FAQ](https://slc.run/docs/faq)
+
+Frequently asked questions about SLC, stateful serverless computing, persistent functions, use cases, pricing, security, and more.
+
 ## Resources
 
 - Main Website: https://slc.run

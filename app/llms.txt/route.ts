@@ -64,6 +64,7 @@ For efficient agent consumption, markdown versions are available:
 - SDK Docs: https://slc.run/docs/sdk/page.md
 - API Reference: https://slc.run/docs/api/page.md
 - Examples: https://slc.run/docs/examples/page.md
+- FAQ: https://slc.run/docs/faq/page.md
 
 Agents are automatically served markdown when detected via User-Agent or Accept headers. Add ?format=markdown to any page URL for explicit markdown rendering.
 
