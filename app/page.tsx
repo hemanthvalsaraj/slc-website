@@ -388,7 +388,7 @@ export default function HomePage() {
       </main>
 
       <footer className="relative px-6 sm:px-10 py-10 border-t border-white/5 text-sm text-zinc-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <span>© Slick Enterprises LLP — Backend logic that remembers</span>
+        <span>© SLC.RUN — Backend logic that remembers</span>
         <div className="flex gap-6">
           <a href="/privacy" className="hover:text-white transition">
             Privacy
