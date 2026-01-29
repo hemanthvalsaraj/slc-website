@@ -1,6 +1,33 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "SLC Terms of Service. Legal agreement governing your use of SLC stateful serverless computing platform, including durable objects, persistent functions, and state management.",
+  keywords: [
+    "SLC terms of service",
+    "terms and conditions",
+    "legal agreement",
+    "SLC terms",
+    "service agreement",
+    "user agreement"
+  ],
+  openGraph: {
+    title: "SLC Terms of Service",
+    description: "Terms of Service for SLC stateful serverless computing platform.",
+    url: "https://slc.run/terms"
+  },
+  alternates: {
+    canonical: "https://slc.run/terms"
+  },
+  robots: {
+    index: true,
+    follow: true
+  }
+};
 
 export default function TermsPage() {
   return (

@@ -1,6 +1,34 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "SLC Privacy Policy. Learn how Slick Enterprises LLP collects, uses, and protects your information when using our stateful serverless computing platform. Compliant with India's DPDP Act.",
+  keywords: [
+    "SLC privacy policy",
+    "data protection",
+    "privacy",
+    "data security",
+    "DPDP Act compliance",
+    "data localization",
+    "SLC data privacy"
+  ],
+  openGraph: {
+    title: "SLC Privacy Policy",
+    description: "Privacy Policy for SLC stateful serverless computing platform. Compliant with India's DPDP Act.",
+    url: "https://slc.run/privacy"
+  },
+  alternates: {
+    canonical: "https://slc.run/privacy"
+  },
+  robots: {
+    index: true,
+    follow: true
+  }
+};
 
 export default function PrivacyPage() {
   return (

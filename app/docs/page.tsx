@@ -1,4 +1,36 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Documentation",
+  description:
+    "Learn how to deploy and manage stateful serverless functions with persistent state and memory. Complete documentation for SLC CLI, SDK, API, and examples.",
+  keywords: [
+    "SLC documentation",
+    "stateful serverless docs",
+    "persistent functions guide",
+    "durable objects documentation",
+    "serverless state management docs",
+    "SLC CLI documentation",
+    "SLC SDK documentation",
+    "SLC API reference"
+  ],
+  openGraph: {
+    title: "SLC Documentation — Build Stateful Apps Without Servers",
+    description:
+      "Complete documentation for SLC. Learn how to deploy and manage stateful serverless functions with persistent state and memory.",
+    url: "https://slc.run/docs",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "SLC Documentation",
+    description: "Complete documentation for building stateful serverless apps with SLC."
+  },
+  alternates: {
+    canonical: "https://slc.run/docs"
+  }
+};
 
 export default function DocsPage() {
   const sections = [

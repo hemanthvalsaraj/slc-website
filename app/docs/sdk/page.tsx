@@ -1,4 +1,28 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "SDK Documentation",
+  description:
+    "Production-ready TypeScript/JavaScript SDK for interacting with SLC Durable Actors API. Works in Node.js and browsers with full type safety.",
+  keywords: [
+    "SLC SDK",
+    "SLC JavaScript SDK",
+    "SLC TypeScript SDK",
+    "durable actors SDK",
+    "SLC API client",
+    "stateful serverless SDK",
+    "@slcrun/sdk"
+  ],
+  openGraph: {
+    title: "SLC SDK Documentation",
+    description: "TypeScript/JavaScript SDK for building stateful serverless applications with SLC.",
+    url: "https://slc.run/docs/sdk"
+  },
+  alternates: {
+    canonical: "https://slc.run/docs/sdk"
+  }
+};
 
 export default function SDKPage() {
   return (

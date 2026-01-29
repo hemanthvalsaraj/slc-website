@@ -53,6 +53,20 @@ SLC is a stateful serverless computing platform developed by Slick Enterprises L
 - Privacy Policy: https://slc.run/privacy
 - Terms of Service: https://slc.run/terms
 
+## Agent-Friendly Markdown Routes
+
+For efficient agent consumption, markdown versions are available:
+- Homepage: https://slc.run/page.md or https://slc.run?format=markdown
+- Documentation: https://slc.run/docs/page.md or https://slc.run/docs?format=markdown
+- Installation: https://slc.run/docs/installation/page.md
+- Quick Start: https://slc.run/docs/quick-start/page.md
+- CLI Docs: https://slc.run/docs/cli/page.md
+- SDK Docs: https://slc.run/docs/sdk/page.md
+- API Reference: https://slc.run/docs/api/page.md
+- Examples: https://slc.run/docs/examples/page.md
+
+Agents are automatically served markdown when detected via User-Agent or Accept headers. Add ?format=markdown to any page URL for explicit markdown rendering.
+
 ## Status
 Currently in early access. Join the waitlist at https://slc.run#waitlist
 `;

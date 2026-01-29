@@ -1,4 +1,27 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Installation",
+  description:
+    "Install the SLC CLI and SDK to get started with stateful serverless computing. Step-by-step installation guide for Node.js and npm.",
+  keywords: [
+    "SLC installation",
+    "install SLC CLI",
+    "install SLC SDK",
+    "stateful serverless setup",
+    "SLC npm install",
+    "SLC CLI installation guide"
+  ],
+  openGraph: {
+    title: "SLC Installation Guide",
+    description: "Install the SLC CLI and SDK to get started with stateful serverless computing.",
+    url: "https://slc.run/docs/installation"
+  },
+  alternates: {
+    canonical: "https://slc.run/docs/installation"
+  }
+};
 
 export default function InstallationPage() {
   return (

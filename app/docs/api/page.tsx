@@ -1,4 +1,28 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "API Reference",
+  description:
+    "Complete API documentation for all SLC endpoints. Learn how to invoke apps, deploy applications, manage projects, and use system endpoints.",
+  keywords: [
+    "SLC API",
+    "SLC API reference",
+    "stateful serverless API",
+    "durable actors API",
+    "SLC REST API",
+    "SLC endpoints",
+    "SLC API documentation"
+  ],
+  openGraph: {
+    title: "SLC API Reference",
+    description: "Complete API documentation for all SLC endpoints and operations.",
+    url: "https://slc.run/docs/api"
+  },
+  alternates: {
+    canonical: "https://slc.run/docs/api"
+  }
+};
 
 export default function APIPage() {
   return (
@@ -345,24 +369,15 @@ export default function APIPage() {
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">
-                Legacy Endpoints (Deprecated)
+                API Versioning
               </h2>
               <div className="glass rounded-2xl p-6 space-y-4">
                 <p className="text-zinc-300">
-                  The following legacy endpoints are still supported but will
-                  return a deprecation warning header: `x-slc-warning: deprecated_route_will_be_removed`
+                  <strong>Note:</strong> Only v1 routes are currently supported. Always use the <code className="text-zinc-400">/v1/</code> prefix for all API endpoints.
                 </p>
-                <ul className="text-sm text-zinc-400 space-y-2 ml-4">
-                  <li>
-                    • <code className="text-zinc-300">POST /invoke/:projectId/:appName/:actorId</code> - Use `/v1/invoke/...` instead
-                  </li>
-                  <li>
-                    • <code className="text-zinc-300">POST /_control/deploy-app</code> - Use `/v1/_control/deploy-app` instead
-                  </li>
-                  <li>
-                    • <code className="text-zinc-300">GET /_health</code> - Use `/v1/_health` instead
-                  </li>
-                </ul>
+                <p className="text-sm text-zinc-400">
+                  Legacy routes (without the <code className="text-zinc-300">/v1/</code> prefix) are not implemented in the region-node and will not work. All endpoints must use the v1 API version.
+                </p>
               </div>
             </section>
           </div>

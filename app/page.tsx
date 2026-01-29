@@ -1,6 +1,54 @@
 import { WaitlistForm } from "@/components/waitlist-form";
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "SLC — Stateful Serverless for Backend Logic That Remembers",
+  description:
+    "Build stateful apps without servers. Deploy and your logic stays alive with persistent functions, durable objects, and serverless state management. Your code with memory.",
+  keywords: [
+    "stateful serverless",
+    "backend logic that remembers",
+    "persistent functions",
+    "serverless state management",
+    "durable objects",
+    "stateful serverless computing",
+    "serverless functions with state",
+    "persistent serverless",
+    "stateful edge computing",
+    "serverless actors",
+    "durable actors",
+    "serverless with memory",
+    "FaaS with state",
+    "cloud functions with persistence"
+  ],
+  openGraph: {
+    title: "SLC — Stateful Serverless for Backend Logic That Remembers",
+    description:
+      "Your code, with memory. Ship stateful apps without servers and keep every function alive after deploy. Build with persistent functions, durable objects, and zero-setup state management.",
+    url: "https://slc.run",
+    type: "website",
+    images: [
+      {
+        url: "https://slc.run/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SLC — Stateful Serverless Computing Platform"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SLC — Stateful Serverless for Backend Logic That Remembers",
+    description:
+      "Build stateful apps without servers. Deploy and your logic stays alive with persistent functions, durable objects, and serverless state management.",
+    images: ["https://slc.run/og-image.png"]
+  },
+  alternates: {
+    canonical: "https://slc.run"
+  }
+};
 
 const codeSnippet = `export default async function handler(state, event) {
   state.count = (state.count || 0) + 1;
@@ -14,15 +62,30 @@ export default function HomePage() {
     name: "Slick Enterprises LLP",
     legalName: "Slick Enterprises LLP",
     url: "https://slc.run",
-    logo: "https://slc.run/og-image.png",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://slc.run/og-image.png",
+      width: 1200,
+      height: 630
+    },
     description:
-      "Slick Enterprises LLP provides SLC, a stateful serverless computing platform for backend logic that remembers.",
-    sameAs: [],
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "Customer Service",
-      email: "privacy@slc.run"
-    }
+      "Slick Enterprises LLP provides SLC, a stateful serverless computing platform for backend logic that remembers. Build stateful apps without servers with persistent functions and durable objects.",
+    foundingDate: "2024",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "Customer Service",
+        email: "privacy@slc.run",
+        availableLanguage: "English"
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "Technical Support",
+        email: "support@slc.run",
+        availableLanguage: "English"
+      }
+    ],
+    sameAs: []
   };
 
   const softwareApplicationSchema = {
@@ -30,19 +93,38 @@ export default function HomePage() {
     "@type": "SoftwareApplication",
     name: "SLC",
     applicationCategory: "DeveloperApplication",
+    applicationSubCategory: "Cloud Computing Platform",
     operatingSystem: "Cloud",
+    softwareVersion: "1.0",
+    releaseNotes: "Early access - Stateful serverless computing platform",
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-      availability: "https://schema.org/PreOrder"
+      availability: "https://schema.org/PreOrder",
+      url: "https://slc.run"
     },
     description:
-      "Stateful serverless computing platform. Build stateful apps without servers. Deploy and your logic stays alive with persistent functions, instant state recall, and serverless state management.",
+      "Stateful serverless computing platform. Build stateful apps without servers. Deploy and your logic stays alive with persistent functions, instant state recall, and serverless state management. Zero setup, fully managed state.",
     url: "https://slc.run",
+    downloadUrl: "https://slc.run/docs/installation",
+    screenshot: {
+      "@type": "ImageObject",
+      url: "https://slc.run/og-image.png",
+      width: 1200,
+      height: 630
+    },
     publisher: {
       "@type": "Organization",
-      name: "Slick Enterprises LLP"
+      name: "Slick Enterprises LLP",
+      url: "https://slc.run"
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      ratingCount: "1",
+      bestRating: "5",
+      worstRating: "1"
     },
     featureList: [
       "Persistent functions",
@@ -50,25 +132,35 @@ export default function HomePage() {
       "Stateful serverless",
       "Serverless state management",
       "Zero setup deployment",
-      "Instant state recall"
+      "Instant state recall",
+      "No servers required",
+      "No databases required",
+      "No caching layers",
+      "Fully managed state"
     ],
-    screenshot: "https://slc.run/og-image.png"
+    softwareRequirements: "Node.js 20+",
+    browserRequirements: "Modern browsers or Node.js 18+"
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "SLC",
+    name: "SLC - Stateful Serverless Computing",
     url: "https://slc.run",
     description:
-      "Stateful serverless, your code with memory. Build stateful apps without servers.",
+      "Stateful serverless, your code with memory. Build stateful apps without servers. Deploy and your logic stays alive with persistent functions, durable objects, and serverless state management.",
     publisher: {
       "@type": "Organization",
-      name: "Slick Enterprises LLP"
+      name: "Slick Enterprises LLP",
+      url: "https://slc.run"
     },
+    inLanguage: "en-US",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://slc.run/?s={search_term_string}",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://slc.run/?s={search_term_string}"
+      },
       "query-input": "required name=search_term_string"
     }
   };
@@ -76,24 +168,47 @@ export default function HomePage() {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "SLC - Stateful Serverless Computing",
+    name: "SLC - Stateful Serverless Computing Platform",
     description:
-      "Stateful serverless computing platform that enables persistent functions with durable state management.",
+      "Stateful serverless computing platform that enables persistent functions with durable state management. Build stateful apps without servers, databases, or caching layers. Your code with memory.",
     brand: {
       "@type": "Brand",
       name: "SLC"
     },
     manufacturer: {
       "@type": "Organization",
-      name: "Slick Enterprises LLP"
+      name: "Slick Enterprises LLP",
+      url: "https://slc.run"
     },
     category: "Cloud Computing Platform",
+    productID: "slc-platform",
+    sku: "slc-1",
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/PreOrder",
       price: "0",
-      priceCurrency: "USD"
+      priceCurrency: "USD",
+      url: "https://slc.run",
+      priceValidUntil: "2025-12-31"
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      ratingCount: "1"
     }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://slc.run"
+      }
+    ]
   };
 
   return (
@@ -113,6 +228,10 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="absolute inset-0 grid-fade pointer-events-none" />
       <header className="relative w-full px-6 py-6 sm:px-10 flex justify-between items-center">

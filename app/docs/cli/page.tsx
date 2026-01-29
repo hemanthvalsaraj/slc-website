@@ -1,4 +1,28 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "CLI Documentation",
+  description:
+    "Complete SLC CLI documentation. Learn how to deploy, develop, and manage Durable Actor applications using the command-line tool.",
+  keywords: [
+    "SLC CLI",
+    "SLC command line",
+    "slc deploy",
+    "slc dev",
+    "SLC CLI commands",
+    "deploy stateful serverless",
+    "SLC CLI documentation"
+  ],
+  openGraph: {
+    title: "SLC CLI Documentation",
+    description: "Complete command-line tool documentation for deploying and managing SLC applications.",
+    url: "https://slc.run/docs/cli"
+  },
+  alternates: {
+    canonical: "https://slc.run/docs/cli"
+  }
+};
 
 export default function CLIPage() {
   return (
@@ -293,14 +317,12 @@ slc config set projectId my-project`}</code>
                     </li>
                     <li>
                       <strong>Upload:</strong> The bundle is sent to the
-                      regional node via HTTP POST to `/v1/_control/deploy-app`
-                      (versioned) or `/_control/deploy-app` (legacy)
+                      regional node via HTTP POST to <code className="text-zinc-400">/v1/_control/deploy-app</code>
                     </li>
                     <li>
                       <strong>Registration:</strong> The node stores the bundle
                       and makes it available at
-                      <code className="text-zinc-400">/v1/invoke/&lt;projectId&gt;/&lt;app-name&gt;/:actorId</code> (versioned)
-                      or <code className="text-zinc-400">/invoke/&lt;app-name&gt;/:actorId</code> (legacy)
+                      <code className="text-zinc-400">/v1/invoke/&lt;projectId&gt;/&lt;app-name&gt;/:actorId</code>
                     </li>
                   </ol>
                 </div>
@@ -315,8 +337,6 @@ slc config set projectId my-project`}</code>
                   <ol className="list-decimal list-inside space-y-2 text-zinc-300 text-sm ml-2">
                     <li>
                       Request: <code className="text-zinc-400">POST /v1/invoke/&lt;projectId&gt;/&lt;app-name&gt;/:actorId</code>
-                      (versioned) or <code className="text-zinc-400">POST /invoke/&lt;app-name&gt;/:actorId</code>
-                      (legacy)
                     </li>
                     <li>Node looks up the app bundle</li>
                     <li>

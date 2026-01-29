@@ -1,4 +1,27 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Quick Start",
+  description:
+    "Deploy your first stateful serverless function in minutes. Learn how to create a worker, configure your app, and deploy with SLC.",
+  keywords: [
+    "SLC quick start",
+    "stateful serverless tutorial",
+    "deploy stateful function",
+    "SLC getting started",
+    "persistent functions tutorial",
+    "durable objects quick start"
+  ],
+  openGraph: {
+    title: "SLC Quick Start Guide",
+    description: "Deploy your first stateful serverless function in minutes with SLC.",
+    url: "https://slc.run/docs/quick-start"
+  },
+  alternates: {
+    canonical: "https://slc.run/docs/quick-start"
+  }
+};
 
 export default function QuickStartPage() {
   return (

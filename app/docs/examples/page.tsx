@@ -1,4 +1,27 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Examples",
+  description:
+    "Ready-to-use examples and code samples for SLC. Learn from counter apps, chat rooms, and common patterns for stateful serverless functions.",
+  keywords: [
+    "SLC examples",
+    "stateful serverless examples",
+    "persistent functions examples",
+    "durable objects examples",
+    "SLC code samples",
+    "SLC tutorials"
+  ],
+  openGraph: {
+    title: "SLC Examples and Code Samples",
+    description: "Ready-to-use examples and code samples for building stateful serverless applications.",
+    url: "https://slc.run/docs/examples"
+  },
+  alternates: {
+    canonical: "https://slc.run/docs/examples"
+  }
+};
 
 export default function ExamplesPage() {
   const examples = [
