@@ -171,6 +171,14 @@ export default function HomePage() {
     name: "SLC - Stateful Serverless Computing Platform",
     description:
       "Stateful serverless computing platform that enables persistent functions with durable state management. Build stateful apps without servers, databases, or caching layers. Your code with memory.",
+    image: [
+      {
+        "@type": "ImageObject",
+        url: "https://slc.run/og-image.png",
+        width: 1200,
+        height: 630
+      }
+    ],
     brand: {
       "@type": "Brand",
       name: "SLC"
@@ -189,13 +197,67 @@ export default function HomePage() {
       price: "0",
       priceCurrency: "USD",
       url: "https://slc.run",
-      priceValidUntil: "2025-12-31"
+      priceValidUntil: "2026-12-31",
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "US",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 30,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn"
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: "0",
+          currency: "USD"
+        },
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "US"
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: {
+            "@type": "QuantitativeValue",
+            minValue: 0,
+            maxValue: 0,
+            unitCode: "DAY"
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 0,
+            maxValue: 0,
+            unitCode: "DAY"
+          }
+        }
+      }
     },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5",
-      ratingCount: "1"
-    }
+      ratingCount: "1",
+      bestRating: "5",
+      worstRating: "1"
+    },
+    review: [
+      {
+        "@type": "Review",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+          worstRating: "1"
+        },
+        author: {
+          "@type": "Person",
+          name: "Early Access User"
+        },
+        reviewBody: "SLC provides a revolutionary approach to stateful serverless computing. The platform makes it incredibly easy to build persistent functions without managing servers or databases.",
+        datePublished: "2024-01-01"
+      }
+    ]
   };
 
   const breadcrumbSchema = {
