@@ -34,6 +34,10 @@ export async function GET(request: NextRequest) {
   if (!path.startsWith('/')) {
     path = '/' + path;
   }
+  // Exclude /api and /_next paths - return 404 for these
+  if (path.startsWith('/api/') || path.startsWith('/_next/')) {
+    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  }
   const config = loadConfig(process.cwd());
   // Construct baseUrl reliably: prefer config, then use request origin, fall back to localhost
   let baseUrl = config.baseUrl;
