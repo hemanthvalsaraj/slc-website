@@ -12,10 +12,14 @@
     "postbuild": "npx accept-md fix-routes"
   },
   "dependencies": {
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "accept-md-runtime": "^3.0.0",
+    "framer-motion": "^12.33.0",
     "next": "16.0.10",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "accept-md-runtime": "^1.0.28"
+    "react-intersection-observer": "^10.0.2",
+    "react-syntax-highlighter": "^16.1.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
