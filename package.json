@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@types/react-syntax-highlighter": "^15.5.13",
-    "accept-md-runtime": "4.0.1",
+    "accept-md-runtime": "4.0.2",
     "framer-motion": "^12.33.0",
     "next": "16.0.10",
     "react": "^19.2.0",
