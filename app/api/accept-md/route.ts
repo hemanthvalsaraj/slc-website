@@ -9,11 +9,21 @@ const HANDLER_PATH = '/api/accept-md';
 export async function GET(request: NextRequest) {
   const pathFromHeader = request.headers.get('x-accept-md-path');
   const pathFromQuery = request.nextUrl.searchParams.get('path');
+  // Headers that may carry the original matched path when using rewrites on Vercel/Next.js
+  const pathFromMatchedHeader =
+    request.headers.get('x-matched-path') ||
+    request.headers.get('x-vercel-original-path') ||
+    request.headers.get('x-original-path') ||
+    request.headers.get('x-rewrite-path');
   const pathname = request.nextUrl.pathname;
-  // Never use the handler path itself - always prefer header, then query, then pathname (if not handler), then default to '/'
-  let path = pathFromHeader;
-  if (!path || path.trim() === '') {
-    path = pathFromQuery && pathFromQuery.trim() !== '' ? pathFromQuery : null;
+  // Never use the handler path itself - always prefer, in order:
+  // 1) explicit header, 2) internal matched-path header, 3) query param, 4) pathname (if not handler), then default to '/'
+  let path = pathFromHeader && pathFromHeader.trim() !== '' ? pathFromHeader : null;
+  if (!path && pathFromMatchedHeader && pathFromMatchedHeader.trim() !== '') {
+    path = pathFromMatchedHeader;
+  }
+  if (!path && pathFromQuery && pathFromQuery.trim() !== '') {
+    path = pathFromQuery;
   }
   // If pathname starts with /api/accept-md, extract the original path from it
   // This handles next.config rewrites that use /api/accept-md/:path* pattern
