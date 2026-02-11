@@ -1,11 +1,12 @@
-/** @type { import('next').NextConfig } */
-const nextConfig = {
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   rewrites: async () => {
     return {
       beforeFiles: [
         {
-          source: '/:path*',
-          destination: '/api/accept-md?path=:path*',
+          source: '/:path((?!api|_next).)*',
+          destination: '/api/accept-md/:path*',
           has: [
             {
               type: 'header',
