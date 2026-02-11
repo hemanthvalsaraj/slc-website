@@ -4,7 +4,18 @@ const nextConfig = {
 
   rewrites: async () => {
     return {
-      beforeFiles: [
+      beforeFiles: [    {
+      source: '/:path*',
+      destination: '/api/accept-md?path=:path*',
+      has: [
+        {
+          type: 'header',
+          key: 'accept',
+          value: '(.*)text/markdown(.*)',
+        },
+      ],
+    }
+
     {
       source: '/:path*',
       destination: '/api/accept-md?path=:path*',
