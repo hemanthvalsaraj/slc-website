@@ -11,24 +11,24 @@ export function ProblemSection() {
 
   const problems = [
     {
-      icon: "⏱️",
-      title: "Weeks of setup",
-      description: "Setting up servers, databases, Redis, and monitoring takes forever"
+      icon: "💾",
+      title: "Need state? You need a database",
+      description: "Serverless functions are stateless. Want a counter or session? Time to set up Redis or a database."
     },
     {
-      icon: "💰",
-      title: "Expensive infrastructure",
-      description: "Pay $200-500/month even when you're just experimenting"
+      icon: "🔌",
+      title: "Database setup for simple things",
+      description: "Chat rooms, shopping carts, rate limiting—each needs its own database setup and connection management."
     },
     {
-      icon: "🔧",
-      title: "Constant maintenance",
-      description: "Keep everything updated, scaled, and monitored"
+      icon: "📚",
+      title: "Learning curve for state",
+      description: "You're comfortable with React, but adding backend state means learning databases, Redis, and connection pooling."
     },
     {
-      icon: "😫",
-      title: "Backend complexity",
-      description: "You're a frontend dev—why do you need to learn all this?"
+      icon: "⚡",
+      title: "Overkill for simple state",
+      description: "A full database or Redis instance just to track a counter or store a session feels like too much."
     }
   ];
 
@@ -46,11 +46,11 @@ export function ProblemSection() {
             The Problem
           </p>
           <h2 className="text-4xl sm:text-5xl font-semibold mb-6 leading-tight tracking-tight">
-            Why frontend developers don't build
+            Building stateful features shouldn't require a database
           </h2>
           <p className="text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            You have an idea. You want to build it. But the backend setup is so overwhelming
-            that you never start. Sound familiar?
+            You want to add a counter, a chat room, or a shopping cart. But serverless functions are stateless, 
+            so you need Redis or a database—just for simple stateful operations.
           </p>
         </motion.div>
 

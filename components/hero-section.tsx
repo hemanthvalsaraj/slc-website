@@ -5,77 +5,70 @@ import { TabbedCode } from "./tabbed-code";
 
 const workerCode = `export default async function handler(ctx) {
   const state = await ctx.state.get();
-  const { action, productId, quantity } = ctx.request.body;
+  const { userId, message } = ctx.request.body;
   
-  // Get or initialize cart
-  const cart = state.cart || [];
+  // Get or initialize messages
+  const messages = state.messages || [];
   
-  if (action === 'add') {
-    // Add item to cart
-    const existingItem = cart.find(item => item.productId === productId);
-    if (existingItem) {
-      existingItem.quantity += quantity || 1;
-    } else {
-      cart.push({ productId, quantity: quantity || 1 });
-    }
-  } else if (action === 'remove') {
-    // Remove item from cart
-    state.cart = cart.filter(item => item.productId !== productId);
-  }
+  // Add new message with timestamp
+  messages.push({
+    userId,
+    message,
+    timestamp: Date.now()
+  });
   
   // Save state - persists automatically!
-  await ctx.state.set({ cart });
+  await ctx.state.set({ messages });
   
   return { 
-    cart, 
-    totalItems: cart.reduce((sum, item) => sum + item.quantity, 0) 
+    messages,
+    messageCount: messages.length
   };
 }`;
 
 const frontendCode = `// React component example
-function ShoppingCart() {
-  const [cart, setCart] = useState([]);
-  const userId = "user-123";
+function ChatRoom() {
+  const [messages, setMessages] = useState([]);
+  const roomId = "room-123";
   
-  const addToCart = async (productId, quantity) => {
+  const sendMessage = async (text) => {
     const response = await fetch(
-      \`https://api.slc.run/v1/invoke/my-app/cart/\${userId}\`,
+      \`https://api.slc.run/v1/invoke/my-app/chat/\${roomId}\`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: 'add',
-          productId,
-          quantity
+          userId: "user-123",
+          message: text
         })
       }
     );
     
     const data = await response.json();
-    setCart(data.cart);
+    setMessages(data.messages);
   };
   
   return (
     <div>
-      {cart.map(item => (
-        <div key={item.productId}>
-          Product {item.productId}: {item.quantity}
+      {messages.map((msg, i) => (
+        <div key={i}>
+          {msg.userId}: {msg.message}
         </div>
       ))}
     </div>
   );
 }`;
 
-const resultCode = `// Response after adding items
+const resultCode = `// Response after sending messages
 {
-  "cart": [
-    { "productId": "prod-1", "quantity": 2 },
-    { "productId": "prod-2", "quantity": 1 }
+  "messages": [
+    { "userId": "user-1", "message": "Hello!", "timestamp": 1234567890 },
+    { "userId": "user-2", "message": "Hey there!", "timestamp": 1234567891 }
   ],
-  "totalItems": 3
+  "messageCount": 2
 }
 
-// Cart persists even after:
+// Messages persist even after:
 // - User closes browser
 // - Server restarts
 // - Days pass by
@@ -129,9 +122,9 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.1] mb-6 tracking-tight"
             >
-              Shopping carts that{" "}
+              Backend features that{" "}
               <span className="relative inline-block">
-                <span className="relative z-10">never reset</span>
+                <span className="relative z-10">remember</span>
                 <motion.span
                   initial={{ width: 0 }}
                   animate={{ width: "100%" }}
@@ -148,7 +141,7 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="text-base text-zinc-400 leading-relaxed mb-10 max-w-xl"
             >
-              Build a shopping cart that remembers items even after users close the browser. No
+              Build stateful features that persist data even after users close the browser. No
               sessions, Redis, or databases needed. Just write your code and deploy.
             </motion.p>
 
@@ -222,18 +215,18 @@ export function HeroSection() {
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-1 h-1 bg-green-400"></div>
                   <span className="text-xs uppercase tracking-wider text-zinc-400 font-medium">
-                    Never Resets
+                    Persistent State
                   </span>
                 </div>
                 <p className="text-sm text-zinc-500">
-                  Cart persists across sessions
+                  Data persists across sessions
                 </p>
               </div>
               <div className="glass p-4">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-1 h-1 bg-green-400"></div>
                   <span className="text-xs uppercase tracking-wider text-zinc-400 font-medium">
-                    No Sessions
+                    Zero Infrastructure
                   </span>
                 </div>
                 <p className="text-sm text-zinc-500">

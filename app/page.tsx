@@ -1,4 +1,3 @@
-import { WaitlistForm } from "@/components/waitlist-form";
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/hero-section";
 import { ProblemSection } from "@/components/problem-section";
@@ -6,6 +5,7 @@ import { SolutionSection } from "@/components/solution-section";
 import { UseCasesSection } from "@/components/use-cases-section";
 import { ComparisonSection } from "@/components/comparison-section";
 import { HowItWorksSection } from "@/components/how-it-works-section";
+import { ZohoEarlyAccessForm } from "@/components/zoho-early-access-form";
 
 export const dynamic = "force-static";
 
@@ -303,6 +303,12 @@ export default function HomePage() {
         </span>
         <div className="flex gap-6 items-center">
           <a
+            href="/demo"
+            className="text-xs uppercase tracking-[0.15em] text-zinc-400 hover:text-white transition font-medium"
+          >
+            Try Demo
+          </a>
+          <a
             href="/docs"
             className="text-xs uppercase tracking-[0.15em] text-zinc-400 hover:text-white transition font-medium"
           >
@@ -334,10 +340,12 @@ export default function HomePage() {
               Ready to build without the backend hassle?
             </h2>
             <p className="text-base text-zinc-400 mb-8 leading-relaxed">
-              Join the waitlist to get early access. Build real-time features in minutes, not
-              weeks. No servers, no databases, just your code with memory.
+              Join the early access list via our Zoho form. Build real-time features in minutes,
+              not weeks. No servers, no databases, just your code with memory.
             </p>
-            <WaitlistForm />
+            <div className="mt-6">
+              <ZohoEarlyAccessForm />
+            </div>
           </div>
         </section>
       </main>
