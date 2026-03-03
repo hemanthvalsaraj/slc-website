@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getAllBoilerplates } from "@/lib/demo-boilerplates";
 import {
   scheduleCleanup,
@@ -28,7 +29,27 @@ export default function DemoPage() {
   const [error, setError] = useState<string | null>(null);
   const [apiKeyCopied, setApiKeyCopied] = useState(false);
 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [actorId, setActorId] = useState<string | null>(null);
+
   const boilerplates = getAllBoilerplates();
+
+  // Ensure each demo session has a stable actorId in the URL so persistence is visible
+  useEffect(() => {
+    const current = searchParams.get("actor");
+    if (current) {
+      setActorId(current);
+      return;
+    }
+
+    const generated = `demo-${Math.random().toString(36).slice(2, 8)}`;
+    setActorId(generated);
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("actor", generated);
+    router.replace(`/demo?${params.toString()}`);
+  }, [router, searchParams]);
 
   useEffect(() => {
     if (demoConfig) {
@@ -104,6 +125,7 @@ export default function DemoPage() {
     setView("presets");
     setSelectedBoilerplate(null);
     setDemoConfig(null);
+    setActorId(null);
     setTimeRemaining(0);
     setWarningShown(false);
     setError(null);
@@ -111,24 +133,27 @@ export default function DemoPage() {
 
   const renderDemoComponent = () => {
     if (!demoConfig) return null;
+    if (!actorId) return null;
 
     const props = {
       projectId: demoConfig.projectId,
       apiKey: demoConfig.apiKey,
       appName: demoConfig.appName,
+      actorId,
     };
 
     switch (demoConfig.boilerplate) {
-      case "counter":
+      case "counters":
         return <CounterDemo {...props} />;
-      case "chat":
-        return <ChatDemo {...props} />;
-      case "todo":
-        return <TodoDemo {...props} />;
       case "shopping-cart":
         return <ShoppingCartDemo {...props} />;
       default:
-        return <div>Unknown boilerplate: {demoConfig.boilerplate}</div>;
+        return (
+          <div className="text-sm text-zinc-400">
+            This demo is best experienced via the API. Use the endpoint and curl
+            example above with your temporary API key.
+          </div>
+        );
     }
   };
 
@@ -275,14 +300,14 @@ export default function DemoPage() {
                     </div>
                     <div className="font-mono text-sm break-all mb-4 bg-white/5 p-3 rounded">
                       https://api.slc.run/v1/invoke/{demoConfig.projectId}/{demoConfig.appName}/
-                      {"{actorId}"}
+                      {actorId ?? "{actorId}"}
                     </div>
                     <div className="text-xs text-zinc-500 mb-2 uppercase tracking-wider">
                       Example curl
                     </div>
                     <div className="font-mono text-xs bg-white/5 p-3 rounded break-all">
                       curl -X POST https://api.slc.run/v1/invoke/{demoConfig.projectId}/
-                      {demoConfig.appName}/demo-1 \<br />
+                      {demoConfig.appName}/{actorId ?? "demo-1"} \<br />
                       &nbsp;&nbsp;-H "Content-Type: application/json" \<br />
                       &nbsp;&nbsp;-H "x-slc-api-key: {demoConfig.apiKey}" \<br />
                       &nbsp;&nbsp;-d '{"{"}"action": "get"{"}"}'
