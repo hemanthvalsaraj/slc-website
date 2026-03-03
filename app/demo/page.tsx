@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getAllBoilerplates } from "@/lib/demo-boilerplates";
 import {
@@ -20,6 +20,20 @@ type DemoState = "selecting" | "starting" | "active" | "expired";
 type DemoView = "presets" | "custom";
 
 export default function DemoPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center font-geist text-sm text-zinc-400">
+          Loading demo…
+        </div>
+      }
+    >
+      <DemoPageInner />
+    </Suspense>
+  );
+}
+
+function DemoPageInner() {
   const [state, setState] = useState<DemoState>("selecting");
   const [view, setView] = useState<DemoView>("presets");
   const [selectedBoilerplate, setSelectedBoilerplate] = useState<string | null>(null);
